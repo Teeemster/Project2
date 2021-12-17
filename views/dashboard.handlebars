@@ -1,0 +1,30 @@
+<section>
+  <h2>Create New Joke</h2>
+
+  <form class="new-joke-form">
+    <div>
+      <label for="joke-title">Title</label>
+      <input type="text" id="joke-title" name="joke-title" />
+    </div>
+    <div>
+      <label for="joke-url">Link</label>
+      <input id="joke-url" name="joke-url" />
+    </div>
+    <button type="submit" class="btn">Create</button>
+  </form>
+</section>
+
+{{#if jokes.length}}
+<section>
+  <h2>Your Jokes</h2>
+  <ol>
+    {{#each jokes as |joke|}}
+    <li>
+      {{> joke-info joke}}
+      <a href="/dashboard/edit/{{joke.id}}" class="edit-link">Edit joke</a>
+    </li>
+    {{/each}}
+  </ol>
+</section>
+{{/if}}
+<script src="/javascript/add-joke.js"></script>
