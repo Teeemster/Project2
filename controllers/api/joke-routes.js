@@ -1,7 +1,9 @@
 //Require express server and models
 const router = require('express').Router();
 
-//Bring in Joke model and User Model (User is brought in to retrieve info on person that posted, and with user_id we can do a JOIN)
+//Bring in Joke model and User Model (User is brought in to retrieve info on person that posted, 
+//and with user_id we can do a JOIN)
+//Vote and category are brought in for additional info
 const { Vote, Joke, User, Category } = require('../../models');
 
 //Get all jokes
@@ -34,7 +36,7 @@ router.get('/', (req, res) => {
             }
         ]
     })
-        //Get ther joke data
+        //Get the joke data
         .then(userJokeData => res.json(userJokeData))
         .catch(err => {
             console.log(err);
@@ -43,7 +45,8 @@ router.get('/', (req, res) => {
 });
 
 //Post a new joke
-//The slash links to index.js to api folder, which then links to index.js in controller file, which then links to server.js
+//The slash links to index.js to api folder, 
+//which then links to index.js in controller file, which then links to server.js
 router.post('/', (req, res) => {
     //User .create Sequelize function to form a joke with a message, url, category, and links to user id
     Joke.create({

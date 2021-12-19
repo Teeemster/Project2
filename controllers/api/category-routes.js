@@ -1,6 +1,8 @@
+//Require express and set up the category model
 const router = require('express').Router();
 const { Category } = require('../../models');
 
+//Get all categories
 router.get('/', (req, res) => {
     Category.findAll()
         .then(categoryInfo => res.json(categoryInfo))
@@ -11,6 +13,7 @@ router.get('/', (req, res) => {
   
 });
 
+//Post a category
 router.post('/', (req, res) => {
     Category.create({
         category_text: req.body.category_text,
@@ -24,5 +27,5 @@ router.post('/', (req, res) => {
         });
 });
 
-//Export
+//Export this route
 module.exports = router;
