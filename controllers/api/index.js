@@ -8,5 +8,5 @@ const jokeRoutes = require('./joke-routes');
 router.use('/users', userRoutes);
 router.use('/jokes', jokeRoutes);
 
-//export the router
+//Export
 module.exports = router;

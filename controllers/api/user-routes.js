@@ -75,3 +75,6 @@ router.post('/login', (req, res) => {
         res.json({ user: userNameInfo, message: 'You have been logged in!' });
     });
 });
+
+//Export
+module.exports = router;

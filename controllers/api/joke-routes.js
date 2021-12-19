@@ -2,20 +2,35 @@
 const router = require('express').Router();
 
 //Bring in Joke model and User Model (User is brought in to retrieve info on person that posted, and with user_id we can do a JOIN)
-const { Vote, Joke, User } = require('../../models');
+const { Vote, Joke, User, Category } = require('../../models');
 
 //Get all jokes
 router.get('/', (req, res) => {
     //Use the findall SQL function to query all jokes
     Joke.findall({
         //Pull ID, URL, message, category, created at attributes, and votes
-        attributes: ['id', 'joke_url', 'message', 'category_id', 'created_at', [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE joke.id = vote.joke_id)'), 'vote_count']
+        attributes: [
+            'id',
+            'joke_url',
+            'message',
+            'category_id',
+            'created_at',
+            [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE joke.id = vote.joke_id)'), 'vote_count']
         ],
+        order: [['created_at', 'DESC']],
         //Include the User that posted
         include: [
             {
                 model: User,
                 attributes: ['username']
+            },
+            {
+                model: Category,
+                attributes: ['id', 'category_text', 'joke_id', 'user_id', 'created_at'],
+                include: {
+                    model: User,
+                    attributes: ['username']
+                }
             }
         ]
     })
@@ -60,7 +75,7 @@ router.put('/upvote', (req, res) => {
             attributes: [
                 'id',
                 'joke_url',
-                'title',
+                'message',
                 'created_at',
                 [
                     sequelize.literal('(SELECT COUNT(*) FROM vote WHERE joke.id = vote.joke_id)'),
@@ -76,3 +91,6 @@ router.put('/upvote', (req, res) => {
             });
     });
 });
+
+//Export
+module.exports = router;
