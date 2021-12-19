@@ -15,7 +15,7 @@ class Joke extends Model {
                 },
                 attributes: [
                     'id',
-                    'post_url',
+                    'joke_url',
                     'title',
                     'created_at',
                     [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE joke.id = vote.joke_id)'), 'vote_count']

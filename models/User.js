@@ -5,6 +5,7 @@ const sequelize = require('../config/connection');
 
 //Extend User Off the Model
 class User extends Model {
+    //Function that checks the password of the user against the hashed password
     checkPass(loginPass) {
         return bcrypt.compareSync(loginPass, this.password);
     }
