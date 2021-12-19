@@ -41,7 +41,6 @@ router.get('/:id', (req, res) => {
 router.post('/', (req, res) => {
     User.create({
         username: req.body.username,
-        email: req.body.email,
         password: req.body.password
     })
         .then(createUser => res.json(createUser))
@@ -59,7 +58,7 @@ router.post('/login', (req, res) => {
         where: {
             username: req.body.username
         }
-        //If User is not found, send a message back as a response to the client
+        //If user is not found, send a message back as a response to the client
     }).then(userNameInfo => {
         if (!userNameInfo) {
             res.status(400).json({ message: 'There is no user with this username!' });
@@ -76,3 +75,6 @@ router.post('/login', (req, res) => {
         res.json({ user: userNameInfo, message: 'You have been logged in!' });
     });
 });
+
+//Export
+module.exports = router;

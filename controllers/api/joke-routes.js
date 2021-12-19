@@ -1,25 +1,42 @@
 //Require express server and models
 const router = require('express').Router();
 
-//Bring in Joke model and User Model (User is brought in to retrieve info on person that posted, and with user_id we can do a JOIN)
-const { Vote, Joke, User } = require('../../models');
+//Bring in Joke model and User Model (User is brought in to retrieve info on person that posted, 
+//and with user_id we can do a JOIN)
+//Vote and category are brought in for additional info
+const { Vote, Joke, User, Category } = require('../../models');
 
 //Get all jokes
 router.get('/', (req, res) => {
     //Use the findall SQL function to query all jokes
     Joke.findall({
         //Pull ID, URL, message, category, created at attributes, and votes
-        attributes: ['id', 'joke_url', 'message', 'category_id', 'created_at', [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE joke.id = vote.joke_id)'), 'vote_count']
+        attributes: [
+            'id',
+            'joke_url',
+            'message',
+            'category_id',
+            'created_at',
+            [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE joke.id = vote.joke_id)'), 'vote_count']
         ],
+        order: [['created_at', 'DESC']],
         //Include the User that posted
         include: [
             {
                 model: User,
                 attributes: ['username']
+            },
+            {
+                model: Category,
+                attributes: ['id', 'category_text', 'joke_id', 'user_id', 'created_at'],
+                include: {
+                    model: User,
+                    attributes: ['username']
+                }
             }
         ]
     })
-        //Get ther joke data
+        //Get the joke data
         .then(userJokeData => res.json(userJokeData))
         .catch(err => {
             console.log(err);
@@ -28,7 +45,8 @@ router.get('/', (req, res) => {
 });
 
 //Post a new joke
-//The slash links to index.js to api folder, which then links to index.js in controller file, which then links to server.js
+//The slash links to index.js to api folder, 
+//which then links to index.js in controller file, which then links to server.js
 router.post('/', (req, res) => {
     //User .create Sequelize function to form a joke with a message, url, category, and links to user id
     Joke.create({
@@ -60,7 +78,7 @@ router.put('/upvote', (req, res) => {
             attributes: [
                 'id',
                 'joke_url',
-                'title',
+                'message',
                 'created_at',
                 [
                     sequelize.literal('(SELECT COUNT(*) FROM vote WHERE joke.id = vote.joke_id)'),
@@ -76,3 +94,6 @@ router.put('/upvote', (req, res) => {
             });
     });
 });
+
+//Export
+module.exports = router;
