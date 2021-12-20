@@ -4,6 +4,7 @@ const sequelize = require('../config/connection');
 
 //Extend Joke Off the Model
 class Joke extends Model {
+    //Indicates upvote is based on post model and not an instance method
     static upvote(body, models) {
         return models.Vote.create({
             user_id: body.user_id,
@@ -15,7 +16,7 @@ class Joke extends Model {
                 },
                 attributes: [
                     'id',
-                    'joke_url',
+                    'punchline',
                     'title',
                     'created_at',
                     [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE joke.id = vote.joke_id)'), 'vote_count']
@@ -38,12 +39,9 @@ Joke.init(
             type: DataTypes.STRING,
             allowNull: false
         },
-        joke_url: {
+        punchline: {
             type: DataTypes.STRING,
             allowNull: false,
-            validate: {
-                isURL: true
-            }
         },
         user_id: {
             type: DataTypes.INTEGER,

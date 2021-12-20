@@ -9,7 +9,7 @@ class User extends Model {
     checkPass(loginPass) {
         return bcrypt.compareSync(loginPass, this.password);
     }
-}
+};
 
 //Establish User Data
 User.init(
