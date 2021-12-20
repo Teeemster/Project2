@@ -13,7 +13,7 @@ router.get('/', (req, res) => {
         //Pull ID, URL, message, category, created at attributes, and votes
         attributes: [
             'id',
-            'joke_url',
+            'punchline',
             'message',
             'category_id',
             'created_at',
@@ -51,7 +51,7 @@ router.post('/', (req, res) => {
     //User .create Sequelize function to form a joke with a message, url, category, and links to user id
     Joke.create({
         message: req.body.message,
-        joke_url: req.body.joke_url,
+        punchline: req.body.punchline,
         user_id: req.body.user_id,
         category_id: req.body.category_id
     })
@@ -77,7 +77,7 @@ router.put('/upvote', (req, res) => {
             },
             attributes: [
                 'id',
-                'joke_url',
+                'punchline',
                 'message',
                 'created_at',
                 [
