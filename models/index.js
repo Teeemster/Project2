@@ -1,9 +1,10 @@
+//Require all models
 const User = require('./User');
 const Joke = require("./Joke");
 const Vote = require('./Vote');
+const Category = require('./Category');
 
 //Setup assocatiations
-//User / Joke Assocations
 User.hasMany(Joke, {
     foreignKey: 'user_id'
 });
@@ -41,4 +42,21 @@ Joke.hasMany(Vote, {
     foreignKey: 'joke_id'
 });
 
-module.exports = { User, Joke, Vote };
+Category.belongsTo(User, {
+    foreignKey: 'user_id'
+});
+
+Category.belongsTo(Post, {
+    foreignKey: 'joke_id'
+});
+
+User.hasMany(Category, {
+    foreignKey: 'user_id'
+});
+
+Joke.hasMany(Category, {
+    foreignKey: 'joke_id'
+});
+
+//Export all models
+module.exports = { User, Joke, Vote, Category };

@@ -4,6 +4,7 @@ const sequelize = require('../config/connection');
 
 //Extend Joke Off the Model
 class Joke extends Model {
+    //Indicates upvote is based on post model and not an instance method
     static upvote(body, models) {
         return models.Vote.create({
             user_id: body.user_id,
