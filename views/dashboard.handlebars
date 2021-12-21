@@ -1,38 +1,18 @@
 <section>
-  <!-- joke heading-->
-  <h2>Write your joke here!</h2>
-  <!-- form for joke submission -->
+  <h2>Create New Joke</h2>
+
   <form class="new-joke-form">
     <div>
-      <!-- enter joke here -->
-      <input id="joke-text" name="joke-text" />
+      <label for="joke-message">Message</label>
+      <input type="text" id="joke-message" name="joke-message" />
     </div>
     <div>
-      <!-- choose a joke type from dropdown -->
-      <label for="joke-type">Choose a joke type:</label>
-      <select name="joke-type" id="joke-type">
-        <option value="oscar">Oscar</option>
-        <option value="dave">Dave</option>
-        <option value="pumpernickel">Pumpernickel</option>
-        <option value="reeses">Reeses</option>
-      </select>
+      <label for="punchline">Punchline</label>
+      <input id="punchline" name="punchline" />
     </div>
-    <!-- submit button -->
     <button type="submit" class="btn">Create</button>
   </form>
 </section>
-<!--if there are any jokes-->
-{{#if jokes.length}}
-<section>
-  <h2>Jokes Board</h2>
-  <ol>
-    {{#each jokes as |joke|}}
-    <li>
-      {{> joke-info joke}}
-      <a href="/dashboard/edit/{{joke.id}}" class="edit-link">Edit joke</a>
-    </li>
-    {{/each}}
-  </ol>
-</section>
-{{/if}}
+
 <script src="/javascript/add-joke.js"></script>
+<script src="/javascript/category.js"></script>

@@ -4,40 +4,37 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Joke Site</title>
+  <title>Rate My Joke!</title>
   <link rel="stylesheet" href="/stylesheets/style.css">
 </head>
 
 <body>
   <div class="wrapper">
-  <header>
-    <h1>
-      <a href="/">Joke Site</a>
-    </h1>
-
-  <!-- if the user is logged in, show web page contents -->
-  {{#if loggedIn}}
-  <nav>
-    <a href="/dashboard">dashboard</a>
-    <button id="logout" class="btn-no-style">logout</button>
-  </nav>
-  </header>
+    <header>
+      <h1>
+        <a href="/">Rate My Joke!</a>
+      </h1>
+      <nav>
+        <!-- if/else for if the user is logged in -->
+        {{#if loggedIn}}
+        <a href="/dashboard">Dashboard</a>
+        <button id="logout" class="btn-no-style">Logout</button>
+        <!-- Redirect to login if not logged in -->
+        {{else}}
+        <a href="/login">Login</a>
+        {{/if}}
+      </nav>
+    </header>
     <main>
       {{{ body }}}
     </main>
     <footer>
       We hope you laughed!
     </footer>
-  {{/if}}
-
-  <!-- when user is not logged in, send to login page -->
-  {{else}}
-  <a href="/login">login</a>  
   </div>
 
-  <!-- show logout button while logged in -->
   {{#if loggedIn}}
-    <script src="/javascript/logout.js"></script>
+  <script src="/javascript/logout.js"></script>
   {{/if}}
 </body>
 
