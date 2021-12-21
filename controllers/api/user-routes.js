@@ -43,7 +43,15 @@ router.post('/', (req, res) => {
         username: req.body.username,
         password: req.body.password
     })
-        .then(createUser => res.json(createUser))
+        .then(newUser => {
+            req.session.save(() => {
+                req.session.user_id = newUser.id;
+                req.session.username = newUser.username;
+                req.session.loggedIn = true;
+
+                res.json(newUser);
+            });
+        })
         .catch(err => {
             console.log(err);
             res.status(500).json(err);
@@ -72,8 +80,25 @@ router.post('/login', (req, res) => {
             return;
         }
 
-        res.json({ user: userNameInfo, message: 'You have been logged in!' });
+        req.session.save(() => {
+            req.session.user_id = dbUserData.id;
+            req.session.username = dbUserData.username;
+            req.session.loggedIn = true;
+
+            res.json({ user: userNameInfo, message: 'You have been logged in!' });
+        });
     });
+});
+
+router.post('/logout', (req, res) => {
+    if (req.session.loggedIn) {
+        req.session.destroy(() => {
+            res.status(204).end();
+        });
+    }
+    else {
+        res.status(404).end();
+    }
 });
 
 //Export
