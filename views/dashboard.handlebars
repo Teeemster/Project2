@@ -4,24 +4,28 @@
   <form class="new-joke-form">
     <div>
       <label for="joke-message">Message</label>
-      <input type="text" id="joke-message" name="joke-message" />
+      <input type="text" class="textbox" id="joke-message" name="joke-message" />
     </div>
     <div>
       <label for="punchline">Punchline</label>
-      <input id="punchline" name="punchline" />
+      <input type="text" class="textbox" id="punchline" name="punchline" />
     </div>
     <div>
-      <label for="categories">Choose a category:</label>
+      <label for="categories" >Choose a category:</label>
       
-      <select name="categories" id="categories">
-        <option value="pun">Pun</option>
-        <option value="dadjoke">Dad Joke</option>
-        <option value="knockknocks">Knock Knocks</option>
-        <option value="limerick">limerick</option>
+      <select name="categories" class="textbox" id="categories">
+        <option class="textbox" value="pun">Pun</option>
+        <option class="textbox" value="dadjoke">Dad Joke</option>
+        <option class="textbox" value="knockknocks">Knock Knocks</option>
+        <option class="textbox" value="limerick">Limerick</option>
       </select>
     </div>
-    <button type="submit" class="btn">Create</button>
+    <button type="submit" class="btn">The Button</button>
+    <br>
+    <br>
   </form>
+
+  <img class="Image2 pure-u-1 1-box" src="./assets/joke2.gif" alt="A Button Image" />
 </section>
 
 <script src="/javascript/add-joke.js"></script>
