@@ -5,6 +5,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Rate My Joke!</title>
+  <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.6/build/pure-min.css"
+    integrity="sha384-Uu6IeWbM+gzNVXJcM9XV3SohHtmWE+3VGi496jvgX1jyvDTXfdK+rfZc8C1Aehk5" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.6/build/grids-responsive-min.css" />
   <link rel="stylesheet" href="/stylesheets/style.css">
 </head>
 
@@ -12,16 +15,16 @@
   <div class="wrapper">
     <header>
       <h1>
-        <a href="/" id="mainheader">Rate My Joke!</a>
+        <a href="/" id="mainheader">💩 Rate My Joke!</a>
       </h1>
       <nav>
         <!-- if/else for if the user is logged in -->
         {{#if loggedIn}}
-        <a href="/dashboard">Dashboard</a>
-        <button id="logout" class="btn-no-style">Logout</button>
+        <a href="/dashboard">💩 Submit a Joke</a>
+        <button id="logout" class="btn-no-style">💩 Logout</button>
         <!-- Redirect to login if not logged in -->
         {{else}}
-        <a href="/login">Login</a>
+        <a href="/login">💩 Login</a>
         {{/if}}
       </nav>
     </header>
@@ -29,7 +32,7 @@
       {{{ body }}}
     </main>
     <footer>
-      We hope you laughed!
+      👀 We hope you laugh!
     </footer>
   </div>
 

@@ -1,6 +1,7 @@
 /* Modify later-- look into alternate frameworks such as bootstrap */
 * {
     box-sizing: border-box;
+    background-color: #f8edeb;
 }
 
 body, html {
@@ -162,6 +163,28 @@ footer {
     font-size: 110%;
 }
 
-#mainheader {
+.Image {
+    border-radius: 25px;
     text-align: center;
+    width: 50%;
+    display: block;
+    margin: auto;
+}
+
+.signup-form {
+    text-align: center;
+    display: block;
+    margin: auto;
+}
+
+.login-form {
+    text-align: center;
+    display: block;
+    margin: auto;
+}
+
+.center-form {
+    text-align: center;
+    display: block;
+    margin: auto;
 }
