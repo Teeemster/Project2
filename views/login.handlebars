@@ -1,21 +1,56 @@
-<form class="login-form">
+<div class="center-form">
+<b>
+  Welcome to Rate My Joke! 
+  <br>
+  <br>
+  Please sign-in if you have an account. 
+  <br>
+  <br>
+  If you do not have an account, please enter your credentials and sign up!
+</b>
+</div>
+
+<div class="pure-g">
+<form class="login-form pure-u-1 pure-u-md-1-2 pure-u-sm-1-2">
   <div>
-    <label for="email-login">email:</label>
-    <input type="text" id="email-login" />
+    <br>
+    <br>
+    <label for="username-login">Username:</label>
+    <input type="text" class="textbox" id="username-login" />
   </div>
   <div>
-    <label for="password-login">password:</label>
-    <input type="password" id="password-login" />
+    <label for="password-login">Password:</label>
+    <input type="password" class="textbox" id="password-login" />
   </div>
   <div>
-    <button type="submit">login</button>
+    <button type="submit">Login</button>
+    <br>
+    <br>
   </div>
 </form>
 
-<!-- redirect user to signup page -->
-<form method="get" action="/signup">
-  <button type="submit" class="sign-up">Sign up for Account!</button>
+<form class="signup-form pure-u-1 pure-u-md-1-2 pure-u-sm-1-2">
+  <div>
+    <br>
+    <label for="username-signup">Username:</label>
+    <input type="text" class="textbox" id="username-signup" />
+  </div>
+  <div>
+    <label for="password-signup">Password:</label>
+    <input type="password" class="textbox" id="password-signup" />
+  </div>
+  <div>
+    <button type="submit">Signup</button>
+  </div>
 </form>
+
+</div>
+<br>
+<br>
+<br>
+<br>
+<img class="Image pure-u-1 1-box" src="./assets/joke1.gif" alt="Joke Image" />
+
+
 
 <script src="/javascript/login.js"></script>
-<script src="/javascript/signup.js"></script>

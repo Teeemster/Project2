@@ -3,9 +3,10 @@ const router = require('express').Router();
 const sequelize = require('../config/connection');
 //Bring in ther models
 const { Joke, User, Category, Vote } = require('../models');
+const withAuth = require('../utils/auth');
 
 //Set up API route for home page
-router.get('/', (req, res) => {
+router.get('/', withAuth, (req, res) => {
     console.log('======================');
     Joke.findAll({
         attributes: [

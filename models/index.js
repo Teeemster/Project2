@@ -46,7 +46,7 @@ Category.belongsTo(User, {
     foreignKey: 'user_id'
 });
 
-Category.belongsTo(Post, {
+Category.belongsTo(Joke, {
     foreignKey: 'joke_id'
 });
 
