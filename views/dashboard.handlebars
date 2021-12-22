@@ -11,21 +11,23 @@
       <input type="text" class="textbox" id="punchline" name="punchline" />
     </div>
     <div>
-      <label for="categories" >Choose a category:</label>
-      
-      <select name="categories" class="textbox" id="categories">
-        <option class="textbox" value="pun">Pun</option>
-        <option class="textbox" value="dadjoke">Dad Joke</option>
-        <option class="textbox" value="knockknocks">Knock Knocks</option>
-        <option class="textbox" value="limerick">Limerick</option>
+      <label for="categories">Choose a category:</label>
+
+      <select name="category_id" class="textbox" id="categories">
+        {{#each categories as |category|}}
+        <option class="textbox" value="{{id}}">{{category_text}}</option>
+
+        {{/each}}
       </select>
+
+
     </div>
     <button type="submit" class="btn">The Button</button>
     <br>
     <br>
   </form>
 
-  <img class="Image2 pure-u-1 1-box" src="./assets/joke2.gif" alt="A Button Image" />
+  <img class="Image2 pure-u-1 1-box" src="/assets/joke2.gif" alt="A Button Image" />
 </section>
 
 <script src="/javascript/add-joke.js"></script>

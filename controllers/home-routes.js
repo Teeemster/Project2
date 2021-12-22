@@ -1,7 +1,7 @@
 //Bring in express and sequelize
 const router = require('express').Router();
 const sequelize = require('../config/connection');
-//Bring in ther models
+//Bring in the models
 const { Joke, User, Category, Vote } = require('../models');
 const withAuth = require('../utils/auth');
 
@@ -19,11 +19,7 @@ router.get('/', withAuth, (req, res) => {
         include: [
             {
                 model: Category,
-                attributes: ['id', 'category_text', 'joke_id', 'user_id', 'created_at'],
-                include: {
-                    model: User,
-                    attributes: ['username']
-                }
+                attributes: ['id', 'category_text', 'created_at'],
             },
             {
                 model: User,
@@ -33,11 +29,8 @@ router.get('/', withAuth, (req, res) => {
     })
         .then(jokeData => {
             const jokes = jokeData.map(joke => joke.get({ plain: true }));
-
-            res.render('homepage', {
-                jokes,
-                loggedIn: req.session.loggedIn
-            });
+            console.log(jokes);
+            res.render('homepage', {jokes, loggedIn: req.session.loggedIn});
         })
         .catch(err => {
             console.log(err);

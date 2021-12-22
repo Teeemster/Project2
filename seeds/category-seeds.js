@@ -4,14 +4,10 @@ const { Category } = require('../models');
 //Seed category data
 const categorydata = [
     {
-        category_text: 'Dad Joke',
-        user_id: 1,
-        joke_id: 1
+        category_text: 'Pun',
     },
     {
         category_text: 'Dad Joke',
-        user_id: 2,
-        joke_id: 2
     }
 ];
 

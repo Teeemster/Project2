@@ -42,20 +42,13 @@ Joke.hasMany(Vote, {
     foreignKey: 'joke_id'
 });
 
-Category.belongsTo(User, {
-    foreignKey: 'user_id'
+Joke.belongsTo(Category, {
+    foreignKey: 'category_id'
 });
 
-Category.belongsTo(Joke, {
-    foreignKey: 'joke_id'
-});
 
-User.hasMany(Category, {
-    foreignKey: 'user_id'
-});
-
-Joke.hasMany(Category, {
-    foreignKey: 'joke_id'
+Category.hasMany(Joke, {
+    foreignKey: 'category_id'
 });
 
 //Export all models

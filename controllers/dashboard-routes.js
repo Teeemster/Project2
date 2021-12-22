@@ -9,40 +9,10 @@ const withAuth = require('../utils/auth');
 router.get('/', withAuth, (req, res) => {
     console.log(req.session);
     console.log('======================');
-    Joke.findAll({
-        where: {
-            user_id: req.session.user_id
-        },
-        attributes: [
-            'id',
-            'punchline',
-            'message',
-            'created_at',
-            [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE joke.id = vote.joke_id)'), 'vote_count']
-        ],
-        include: [
-            {
-                model: Category,
-                attributes: ['id', 'category_text', 'joke_id', 'user_id', 'created_at'],
-                include: {
-                    model: User,
-                    attributes: ['username']
-                }
-            },
-            {
-                model: User,
-                attributes: ['username']
-            }
-        ]
+    Category.findAll({}).then(categoryData => {
+        const categories = categoryData.map(category => category.get({ plain: true }));
+        res.render('dashboard', { categories, loggedIn: true });
     })
-        .then(jokeData => {
-            const jokes = jokeData.map(joke => joke.get({ plain: true }));
-            res.render('dashboard', { jokes, loggedIn: true });
-        })
-        .catch(err => {
-            console.log(err);
-            res.status(500).json(err);
-        });
 });
 
 //Export the api route
