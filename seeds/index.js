@@ -9,19 +9,19 @@ const sequelize = require('../config/connection');
 
 //Group all seeds together in async function
 const seedAll = async () => {
-    await sequelize.sync({ force: true });
-    console.log('--------------');
-    await seedUsers();
-    console.log('--------------');
+    // await sequelize.sync({ force: true });
+    // console.log('--------------');
+    // await seedUsers();
+    // console.log('--------------');
 
-    await seedJokes();
-    console.log('--------------');
+    // await seedJokes();
+    // console.log('--------------');
 
     await seedCategories();
     console.log('--------------');
 
-    await seedVotes();
-    console.log('--------------');
+    // await seedVotes();
+    // console.log('--------------');
 
     process.exit(0);
 };

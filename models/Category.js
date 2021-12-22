@@ -17,20 +17,6 @@ Category.init(
         category_text: {
             type: DataTypes.STRING,
             allowNull: false
-        },
-        user_id: {
-            type: DataTypes.INTEGER,
-            references: {
-                model: 'user',
-                key: 'id'
-            }
-        },
-        joke_id: {
-            type: DataTypes.INTEGER,
-            references: {
-                model: 'joke',
-                key: 'id'
-            }
         }
     },
     {

@@ -52,7 +52,7 @@ router.post('/', (req, res) => {
     Joke.create({
         message: req.body.message,
         punchline: req.body.punchline,
-        user_id: req.body.user_id,
+        user_id: req.session.user_id,
         category_id: req.body.category_id
     })
         //Post the joke data
