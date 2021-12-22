@@ -8,6 +8,12 @@ const categorydata = [
     },
     {
         category_text: 'Dad Joke',
+    },
+    {
+        category_text: 'Knock Knocks',
+    },
+    {
+        category_text: 'Limerick',
     }
 ];
 
