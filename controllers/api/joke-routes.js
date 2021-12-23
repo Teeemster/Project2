@@ -40,7 +40,6 @@ router.get('/', (req, res) => {
         //Get the joke data
         .then(userJokeData => res.json(userJokeData))
         .catch(err => {
-            console.log(err);
             res.status(500).json(err);
         });
 });
@@ -59,7 +58,6 @@ router.post('/', (req, res) => {
         //Post the joke data
         .then(userJokeData => res.json(userJokeData))
         .catch(err => {
-            console.log(err);
             res.status(500).json(err);
         });
 });
@@ -90,7 +88,6 @@ router.put('/upvote', (req, res) => {
             //Post the joke data
             .then(userJokeData => res.json(userJokeData))
             .catch(err => {
-                console.log(err);
                 res.status(400).json(err);
             });
     });

@@ -7,7 +7,6 @@ router.get('/', (req, res) => {
     Category.findAll()
         .then(categoryInfo => res.json(categoryInfo))
         .catch(err => {
-            console.log(err);
             res.status(500).json(err);
         });
   
@@ -22,7 +21,6 @@ router.post('/', (req, res) => {
     })
         .then(categoryInfo => res.json(categoryInfo))
         .catch(err => {
-            console.log(err);
             res.status(400).json(err);
         });
 });

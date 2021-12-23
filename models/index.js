@@ -13,7 +13,6 @@ Joke.belongsTo(User, {
     foreignKey: 'user_id',
 });
 
-//User / Vote Associations
 User.belongsToMany(Joke, {
     through: Vote,
     as: 'voted_jokes',
