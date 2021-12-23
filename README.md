@@ -37,5 +37,5 @@
 
 * <a href="https://github.com/badges/shields"><img src="https://img.shields.io/badge/JSS-green" alt="JavaScript"></a>
 * <a href="https://github.com/badges/shields"><img src="https://img.shields.io/badge/HTML-green" alt="HTML"></a>
-* <a href="https://github.com/badges/shields"><img src="https://img.shields.io/badge/HTML-green" alt="EXPRESS.JS"></a>
-* <a href="https://github.com/badges/shields"><img src="https://img.shields.io/badge/HTML-green" alt="NODE.JS"></a>
+* <a href="https://github.com/badges/shields"><img src="https://img.shields.io/badge/EXPRESS.JS-green" alt="EXPRESS.JS"></a>
+* <a href="https://github.com/badges/shields"><img src="https://img.shields.io/badge/NODE.JS-green" alt="NODE.JS"></a>
