@@ -1,5 +1,6 @@
 //Require express server and models
 const router = require('express').Router();
+const sequelize = require('sequelize')
 
 //Bring in Joke model and User Model (User is brought in to retrieve info on person that posted, 
 //and with user_id we can do a JOIN)
@@ -39,7 +40,6 @@ router.get('/', (req, res) => {
         //Get the joke data
         .then(userJokeData => res.json(userJokeData))
         .catch(err => {
-            console.log(err);
             res.status(500).json(err);
         });
 });
@@ -58,7 +58,6 @@ router.post('/', (req, res) => {
         //Post the joke data
         .then(userJokeData => res.json(userJokeData))
         .catch(err => {
-            console.log(err);
             res.status(500).json(err);
         });
 });
@@ -89,7 +88,6 @@ router.put('/upvote', (req, res) => {
             //Post the joke data
             .then(userJokeData => res.json(userJokeData))
             .catch(err => {
-                console.log(err);
                 res.status(400).json(err);
             });
     });

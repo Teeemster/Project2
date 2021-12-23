@@ -1,3 +1,4 @@
+//Async functions for logging in
 async function loginFormHandler(event) {
   event.preventDefault();
 

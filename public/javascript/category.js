@@ -1,3 +1,4 @@
+//Async function for selecting a category
 async function categoryFormHandler(event) {
     event.preventDefault();
   

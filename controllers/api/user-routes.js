@@ -10,7 +10,6 @@ router.get('/', (req, res) => {
     })
         .then(allUserInfo => res.json(allUserInfo))
         .catch(err => {
-            console.log(err);
             res.status(500).json(err);
         });
 });
@@ -31,7 +30,6 @@ router.get('/:id', (req, res) => {
             res.json(singleUserInfo);
         })
         .catch(err => {
-            console.log(err);
             res.status(500).json(err);
         });
 });
@@ -53,7 +51,6 @@ router.post('/', (req, res) => {
             });
         })
         .catch(err => {
-            console.log(err);
             res.status(500).json(err);
         });
 });
@@ -90,6 +87,7 @@ router.post('/login', (req, res) => {
     });
 });
 
+//API route for logging out. Destroys the session
 router.post('/logout', (req, res) => {
     if (req.session.loggedIn) {
         req.session.destroy(() => {

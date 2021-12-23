@@ -1,3 +1,5 @@
+
+//Async form handler function used for adding a joke. It posts the joke-message, the punchline, and the category-id all in one.
 async function newFormHandler(event) {
     event.preventDefault();
   
@@ -26,4 +28,5 @@ async function newFormHandler(event) {
     }
   }
   
+  //Attaches the event listener for submitting to the joke
   document.querySelector('.new-joke-form').addEventListener('submit', newFormHandler);

@@ -7,7 +7,6 @@ const withAuth = require('../utils/auth');
 
 //Set up API route for home page
 router.get('/', withAuth, (req, res) => {
-    console.log('======================');
     Joke.findAll({
         attributes: [
             'id',
@@ -29,11 +28,9 @@ router.get('/', withAuth, (req, res) => {
     })
         .then(jokeData => {
             const jokes = jokeData.map(joke => joke.get({ plain: true }));
-            console.log(jokes);
             res.render('homepage', {jokes, loggedIn: req.session.loggedIn});
         })
         .catch(err => {
-            console.log(err);
             res.status(500).json(err);
         });
 });
